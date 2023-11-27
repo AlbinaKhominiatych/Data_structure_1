@@ -23,9 +23,25 @@ class LinkedList:
         while last_node.next:
             last_node = last_node.next #переміщуємося до наступного елементу
         last_node.next = new_node
+
+    def replace(self, old_data, new_data):
+        current = self.head
+        while current:
+            if current.data == old_data:
+                current.data = new_data
+                print(f"Значення {old_data} замінено на {new_data}")
+                return
+            current = current.next
+        print(f"Значення {old_data} не знайдено у списку")
+
 my_lst = LinkedList()
-my_lst.append(1)
-my_lst.append(2)
-my_lst.append(3)
-my_lst.append(4)
+nums = input("Введіть усі числа через пробіл ").split()
+for num in nums:
+    my_lst.append(int(num))
+print(my_lst)
+#сюди пункти меню
+#Замінити значення у списку
+old_value = int(input("Введіть значення, яке треба замінити: "))
+new_value = int(input("Введіть значення, на яке замінити: "))
+my_lst.replace(old_value, new_value)
 print(my_lst)
