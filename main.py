@@ -7,14 +7,12 @@ class Node:
     def __str__(self):
         return f"[{self.data}] -> {self.next}"
 
-node1 = Node(1)
-#print(node1)
-node2 = Node(2)
-#print(node2)
-node3 = Node(3)
-node4 = Node(4)
-node1.next = node2
-node2.next = node3
-node3.next = node4
-print(node1)
+node = Node(1)
+current_node = node
 
+for i in range(2, 360):
+    new_node = Node(i)
+    current_node.next = new_node
+    current_node = new_node
+
+print(node)
