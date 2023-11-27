@@ -6,7 +6,13 @@ class Node:
         self.next = None
 
     def __str__(self):
-        return f"{self.prev} <- [{self.data}] -> {self.next} "
+        current = my_list.head
+        elements = []
+        while current:
+            elements.append(str(current.data))
+            current = current.next
+        return f"{'<->' .join(elements)}"
+
 
 class DoublyLinkedList:
     def __init__(self):
@@ -25,10 +31,6 @@ class DoublyLinkedList:
 
 my_list = DoublyLinkedList()
 my_list.append(1)
-my_list.append(2)
-my_list.append(3)
-my_list.append(5)
-my_list.append(10)
 #додавання елементу на початок списку
 new_node = Node(0)
 new_node.next = my_list.head
@@ -38,16 +40,11 @@ my_list.head = new_node
 #додавання елементу на другу позицію списку
 new_node = Node(4)
 current = my_list.head
-while current.data != 5:
+while current.data != 1:
     current = current.next
 if current.next is not None:
     current.next.prev = new_node
 current.next = new_node
 new_node.prev = current
 #виведення списку
-current = my_list.head
-elements = []
-while current:
-    elements.append(str(current.data))
-    current = current.next
-print(" <-> ".join(elements))
+print(new_node)
